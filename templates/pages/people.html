@@ -1,0 +1,100 @@
+<% head-bottom %>
+  <style type="text/css">
+  .card.person .profile-left { grid-area: card-person-profile-left; }
+  .card.person .profile-right { grid-area: card-person-profile-right; }
+
+  .card {
+    display: grid;
+    grid-template-areas:
+      'card-person-profile-left'
+      'card-person-profile-right';
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 576px) {}
+  @media (min-width: 768px) {
+    .card {
+      display: grid;
+      grid-template-areas:
+        'card-person-profile-left card-person-profile-right';
+      grid-template-columns: 300px 1fr;
+    }
+  }
+  @media (min-width: 992px) {}
+  @media (min-width: 1200px) {
+    .card {
+      display: grid;
+      grid-template-areas:
+        'card-person-profile-left card-person-profile-right';
+      grid-template-columns: 200px 1fr;
+    }
+  }
+  </style>
+<% head-bottom %>
+
+<% body %>
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+      <img src="img/1.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+      <div class="profile-title p-4 font-bold uppercase">Jordan Peterson</div>
+      <div class="profile-content p-4">
+        Jordan Peterson is a Canadian clinical psychologist, cultural critic, and professor of psychology at the University of Toronto.
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+      <img src="img/2.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+      <div class="profile-title p-4 font-bold uppercase">Eric Weinstein</div>
+      <div class="profile-content p-4">
+        Eric R. Weinstein is a managing director of Thiel Capital in San Francisco. He is also a research fellow at the Mathematical Institute of Oxford University.
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+      <img src="img/3.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+      <div class="profile-title p-4 font-bold uppercase">Dave Rubin</div>
+      <div class="profile-content p-4">
+        Dave Rubin is a political commentator, comedian and talk show host.
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+      <img src="img/4.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+      <div class="profile-title p-4 font-bold uppercase">Ben Shapiro</div>
+      <div class="profile-content p-4">
+        Ben Shapiro is an American conservative political commentator, columnist, author, radio talk show host and lawyer.
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+      <img src="img/5.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+      <div class="profile-title p-4 font-bold uppercase">Sam Harris</div>
+      <div class="profile-content p-4">
+        Sam Harris is a neuroscientist and philosopher. He is the author of five New York Times bestsellers and a prolific podcaster.
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 leading-loose">
+    <div class="font-bold text-white text-xl uppercase py-4">Think someone belongs here?</div>
+    <p>Send me an email and nominate someone. Email: spirodonfl at gmail dot com</p>
+  </div>
+<% body %>

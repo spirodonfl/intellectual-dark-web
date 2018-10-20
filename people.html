@@ -1,11 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="">
-
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>The Intellectual Dark Web</title>
-  <meta name="description" content="Intellectual Dark Web - The definitive website for the movement">
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="manifest" href="site.webmanifest">
@@ -27,28 +26,45 @@
       color: rgb(220, 220, 220);
     }
     .dark a, .dark button {color: white;}
+
+    .off-dark-1 { background-color: rgb(50, 50, 50); }
   </style>
+  
   <style type="text/css">
+  .card.person .profile-left { grid-area: card-person-profile-left; }
+  .card.person .profile-right { grid-area: card-person-profile-right; }
+
   .card {
     display: grid;
     grid-template-areas:
-    'card-person-profile-pic card-person-profile-title'
-    '.                       card-person-profile-content';
-    grid-template-columns: 200px 1fr;
+      'card-person-profile-left'
+      'card-person-profile-right';
+    grid-template-columns: 1fr;
   }
-  .card.person .profile-pic { grid-area: card-person-profile-pic; }
-  .card.person .profile-title { grid-area: card-person-profile-title; }
-  .card.person .profile-content { grid-area: card-person-profile-content; }
 
   @media (min-width: 576px) {}
-  @media (min-width: 768px) {}
+  @media (min-width: 768px) {
+    .card {
+      display: grid;
+      grid-template-areas:
+        'card-person-profile-left card-person-profile-right';
+      grid-template-columns: 300px 1fr;
+    }
+  }
   @media (min-width: 992px) {}
-  @media (min-width: 1200px) {}
+  @media (min-width: 1200px) {
+    .card {
+      display: grid;
+      grid-template-areas:
+        'card-person-profile-left card-person-profile-right';
+      grid-template-columns: 200px 1fr;
+    }
+  }
   </style>
-</head>
 
+</head>
 <body class="dark">
-  <!--[if lte IE 9]>
+    <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
@@ -65,23 +81,65 @@
       <a href="/about.html" class="block md:inline-block border-white border-solid border-t p-1 py-3 hover:text-grey">About</a>
     </div>
   </div>
-
+  
   <div class="container mx-auto py-5 mb-2 card person">
-    <div class="profile-pic p-4"><img src="img/1.jpg" class="border-solid border-gray border" /></div>
-    <div class="profile-title p-4 font-bold uppercase">Jordan Peterson</div>
-    <div class="profile-content p-4"></div>
+    <div class="profile-left p-4">
+        <img src="img/1.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+        <div class="profile-title p-4 font-bold uppercase">Jordan Peterson</div>
+        <div class="profile-content p-4">
+            Jordan Peterson is a Canadian clinical psychologist, cultural critic, and professor of psychology at the University of Toronto.
+        </div>
+    </div>
   </div>
 
   <div class="container mx-auto py-5 mb-2 card person">
-    <div class="profile-pic p-4"><img src="img/2.jpg" class="border-solid border-gray border" /></div>
-    <div class="profile-title p-4 font-bold uppercase">Eric Weinstein</div>
-    <div class="profile-content p-4"></div>
+    <div class="profile-left p-4">
+        <img src="img/2.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+        <div class="profile-title p-4 font-bold uppercase">Eric Weinstein</div>
+        <div class="profile-content p-4">
+            Eric R. Weinstein is a managing director of Thiel Capital in San Francisco. He is also a research fellow at the Mathematical Institute of Oxford University.
+        </div>
+    </div>
   </div>
 
   <div class="container mx-auto py-5 mb-2 card person">
-    <div class="profile-pic p-4"><img src="img/3.jpg" class="border-solid border-gray border" /></div>
-    <div class="profile-title p-4 font-bold uppercase">Dave Rubin</div>
-    <div class="profile-content p-4"></div>
+    <div class="profile-left p-4">
+        <img src="img/3.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+        <div class="profile-title p-4 font-bold uppercase">Dave Rubin</div>
+        <div class="profile-content p-4">
+            Dave Rubin is a political commentator, comedian and talk show host.
+        </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+        <img src="img/4.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+        <div class="profile-title p-4 font-bold uppercase">Ben Shapiro</div>
+        <div class="profile-content p-4">
+            Ben Shapiro is an American conservative political commentator, columnist, author, radio talk show host and lawyer.
+        </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto py-5 mb-2 card person">
+    <div class="profile-left p-4">
+        <img src="img/5.jpg" class="border-solid border-gray border" />
+    </div>
+    <div class="profile-right">
+        <div class="profile-title p-4 font-bold uppercase">Sam Harris</div>
+        <div class="profile-content p-4">
+            Sam Harris is a neuroscientist and philosopher. He is the author of five New York Times bestsellers and a prolific podcaster.
+        </div>
+    </div>
   </div>
 
   <div class="container mx-auto py-5 mb-2 leading-loose">
@@ -89,7 +147,7 @@
     <p>Send me an email and nominate someone. Email: spirodonfl at gmail dot com</p>
   </div>
 
-  <footer class="container mx-auto mt-4 py-6 border-solid border-white border-t-2 text-center">
+    <footer class="container mx-auto mt-16 py-6 border-solid border-white border-t-2 text-center">
     Created for advocates of truth, free speech and individual responsibility.
   </footer>
 
@@ -100,5 +158,4 @@
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
-
 </html>
