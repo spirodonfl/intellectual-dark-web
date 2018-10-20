@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>The Intellectual Dark Web</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!--<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">-->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="css/tailwind.min.css">
+  <style type="text/css">
+    body {
+      letter-spacing: 2px;
+      font-family: 'Lato', sans-serif;
+    }
+    a {text-decoration: none;}
+
+    body.dark {
+      background-color: rgb(40, 40, 40);
+      color: rgb(220, 220, 220);
+    }
+    .dark a, .dark button {color: rgb(160, 160, 160);}
+
+    .off-dark-1 { background-color: rgb(50, 50, 50); }
+  </style>
+  
+  <style type="text/css">
+    .scene {
+      min-height: 600px;
+      perspective: 1200px;
+    }
+    .threed {
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      backface-visibility: hidden;
+      position: absolute;
+      transform-style: preserve-3d;
+      user-drag: none; 
+      user-select: none;
+      zoom: inherit;
+    }
+    .person {
+      height: 120px;
+      width: 160px;
+    }
+    .idea {
+      width: 300px;
+    }
+    .line {
+      height: 2px;
+      width: 300px;
+    }
+
+    .perspective {
+      height: 3000px;
+      position: absolute;
+      transform-style: preserve-3d;
+      width: 3000px;
+      zoom: 100%;
+    }
+  </style>
+
+</head>
+<body class="dark">
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <div class="container mx-auto justify-center py-5">
+    <h1 class="text-center text-white text-4xl uppercase">The Intellectual Dark Web</h1>
+  </div>
+
+  <div class="container mx-auto justify-center mt-4">
+    <div class="text-center uppercase">
+      <a href="index.html" class="block md:inline-block border-grey border-solid border-t p-1 py-3 hover:text-grey">Home</a>
+      <a href="people.html" class="block md:inline-block border-grey border-solid border-t p-1 py-3 hover:text-grey">People</a>
+      <a href="about.html" class="block md:inline-block border-grey border-solid border-t p-1 py-3 hover:text-grey">About</a>
+    </div>
+  </div>
+  
+  <div class="scene overflow-hidden container mx-auto p-4 border-solid border-white border">
+    <div class="perspective container cursor-move" data-transform="[0, 0]" style="transform: translate3d(0px, 0px, 0px);">
+      <img class="threed cursor-pointer person border-solid border-white border" data-transform="[0, 0, 0]" src="img/1.jpg" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);" />
+      <div class="threed cursor-pointer idea p-1 border-solid border-white border text-center uppercase" data-transform="[0, 0, 0]" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">Individual Responsibility</div>
+      <div class="threed cursor-pointer line bg-white" data-transform="[0, 0, 0]" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);"></div>
+    </div>
+  </div>
+
+  <div id="editor" class="container mx-auto">
+    <div id="edit_on_off">Off</div>
+    <div id="edit_mode" class="cursor-pointer">Move</div>
+  </div>
+  <script type="text/javascript">
+    let selectedElement = false;
+    let editMode = 0; // 0 = move, 1 = rotate
+    let el_editOnOff = document.querySelector('#edit_on_off');
+    let el_editMode = document.querySelector('#edit_mode');
+
+    let perspective = document.querySelector('.perspective');
+    let mousePosition = false;
+
+    window.addEventListener('load', () => {
+      el_editMode.addEventListener('click', () => {
+        if (selectedElement) {
+          if (editMode === 0) {
+            editMode = 1;
+            el_editMode.innerHTML = 'Rotate';
+          } else {
+            editMode = 0;
+            el_editMode.innerHTML = 'Move';
+          }
+        }
+      });
+      window.addEventListener('keyup', (key) => {
+        // console.log({key: key.key, keyCode: key.keyCode, which: key.which, shiftKey: key.shiftKey, ctrlKey: key.ctrlKey});
+        if (key.keyCode === 27) {
+          if (selectedElement) {
+            el_editOnOff.innerHTML = 'Off';
+            el_editMode.innerHTML = 'Move';
+            editMode = 0;
+            selectedElement.style.opacity = '1';
+            selectedElement = false;
+          }
+        } else if (selectedElement) {
+          let data = JSON.parse(selectedElement.dataset.transform);
+          if (key.keyCode === 38) {
+            // Up
+            if (editMode === 0) {
+              data[1] -= 10;
+            } else {
+              data[2] -= 10;
+            }
+            selectedElement.style.transform = 'translate3d(' + data[0] + 'px, ' + data[1] + 'px, 0px) rotate3d(0, 0, 1, ' + data[2] + 'deg)';
+            selectedElement.dataset.transform = JSON.stringify(data);
+          } else if (key.keyCode === 40) {
+            // Down
+            if (editMode === 0) {
+              data[1] += 10;
+            } else {
+              data[2] += 10;
+            }
+            selectedElement.style.transform = 'translate3d(' + data[0] + 'px, ' + data[1] + 'px, 0px) rotate3d(0, 0, 1, ' + data[2] + 'deg)';
+            selectedElement.dataset.transform = JSON.stringify(data);
+          } else if (key.keyCode === 37) {
+            // Left
+            if (editMode === 0) {
+              data[0] -= 10;
+            }
+            selectedElement.style.transform = 'translate3d(' + data[0] + 'px, ' + data[1] + 'px, 0px) rotate3d(0, 0, 1, ' + data[2] + 'deg)';
+            selectedElement.dataset.transform = JSON.stringify(data);
+          } else if (key.keyCode === 39) {
+            // Right
+            if (editMode === 0) {
+              data[0] += 10;
+            }
+            selectedElement.style.transform = 'translate3d(' + data[0] + 'px, ' + data[1] + 'px, 0px) rotate3d(0, 0, 1, ' + data[2] + 'deg)';
+            selectedElement.dataset.transform = JSON.stringify(data);
+          }
+        }
+      });
+
+      let threeds = document.querySelectorAll('.threed');
+      for (let t in threeds) {
+        let ee = threeds[t];
+        if (ee instanceof HTMLElement) {
+          ee.addEventListener('click', (myself) => {
+            if (selectedElement) {
+              selectedElement.style.opacity = '1';
+            }
+            selectedElement = myself.target;
+            selectedElement.style.opacity = '0.5';
+            el_editOnOff.innerHTML = 'On';
+            myself.preventDefault();
+            return false;
+          });
+        }
+      }
+
+      perspective.addEventListener('mousedown', (myself) => {
+        console.log(myself);
+        let data = JSON.parse(perspective.dataset.transform);
+      });
+    });
+  </script>
+
+    <footer class="container mx-auto mt-16 py-6 border-solid border-white border-t-2 text-center">
+    Created for advocates of truth, free speech and individual responsibility.
+  </footer>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+</html>
