@@ -1,2 +1,3 @@
 *.sublime*
 .jshintrc
+*.privatekey
