@@ -1,0 +1,7 @@
+index.html
+people.html
+about.html
+ideas.html
+topics.html
+robots.txt
+sitemap.xml
